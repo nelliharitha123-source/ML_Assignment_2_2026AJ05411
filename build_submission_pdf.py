@@ -38,6 +38,13 @@ def find_link(readme_text, label):
     return match.group(1) if match else ""
 
 
+def scaled_image(path, max_width=17 * cm, max_height=15 * cm):
+    image = Image(str(path))
+    scale = min(max_width / image.imageWidth, max_height / image.imageHeight)
+    image.drawWidth, image.drawHeight = image.imageWidth * scale, image.imageHeight * scale
+    return image
+
+
 def table_flowable(rows):
     cells = [[Paragraph(inline(c.strip()), BODY) for c in row.strip("|").split("|")] for row in rows]
     width = 17 * cm
@@ -74,7 +81,10 @@ def readme_flowables(readme_text):
         if not stripped:
             continue
         heading = re.match(r"^(#{1,3}) (.*)", stripped)
-        if heading:
+        image_line = re.match(r"^!\[[^\]]*\]\(([^)]+)\)$", stripped)
+        if image_line and (ROOT / image_line.group(1)).exists():
+            story.append(scaled_image(ROOT / image_line.group(1)))
+        elif heading:
             style = {1: "Heading1", 2: "Heading2", 3: "Heading3"}[len(heading.group(1))]
             story.append(Paragraph(inline(heading.group(2)), STYLES[style]))
         elif re.match(r"^(- |\d+\. )", stripped):
@@ -117,10 +127,7 @@ def main():
         Paragraph("3. Screenshot - Assignment execution on BITS Virtual Lab", STYLES["Heading2"]),
     ]
     if screenshot.exists():
-        image = Image(str(screenshot))
-        scale = min(17 * cm / image.imageWidth, 15 * cm / image.imageHeight)
-        image.drawWidth, image.drawHeight = image.imageWidth * scale, image.imageHeight * scale
-        story.append(image)
+        story.append(scaled_image(screenshot))
     else:
         story.append(Paragraph("[SCREENSHOT MISSING]", BODY))
     story += [PageBreak(), Paragraph("4. GitHub README Content", STYLES["Heading2"])]

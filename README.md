@@ -93,3 +93,9 @@ streamlit run app.py
 ```
 
 The app defaults to the included `test_data.csv` and also accepts an uploaded test CSV with the 30 feature columns and `target`. It provides a model dropdown, the six metrics, a confusion matrix, a classification report, and a table comparing all five models. It only loads the saved `.joblib` models and never retrains on uploaded data.
+
+## BITS Virtual Lab execution
+
+The assignment was executed on BITS Virtual Lab (Prayogshala, lab user `s2026aj05411`, 30-Oct-2026). The screenshot shows `ML_Assignment2_2026AJ05411.ipynb` running in JupyterLab inside the lab, with the confusion matrices of all five models. The lab session token in the address bar has been blacked out.
+
+![BITS Virtual Lab execution](bits_virtual_lab_screenshot.png)
