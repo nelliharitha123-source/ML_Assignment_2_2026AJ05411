@@ -27,7 +27,7 @@ Kaggle mirror: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-dat
 
 ## c. GitHub repository link
 
-- GitHub repository: ADD_GITHUB_LINK
+- GitHub repository: https://github.com/nelliharitha123-source/ML_Assignment_2_2026AJ05411
 - Live Streamlit app: ADD_STREAMLIT_LINK
 
 ### Repository contents
