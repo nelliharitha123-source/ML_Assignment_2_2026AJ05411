@@ -23,6 +23,8 @@ The dataset satisfies the assignment minimum of 12 features and 500 instances. T
 
 UCI source: https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic
 
+Kaggle mirror: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+
 ## c. GitHub repository link
 
 - GitHub repository: ADD_GITHUB_LINK
